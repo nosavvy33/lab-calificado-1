@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">LabCalificado1</string>
+    <string name="app_splash_name">PizzaInstant</string>
+    <string name="oferta_title">Pizza Meat Lover</string>
+    <string name="oferta_description">Pizza con harta carne, queso mozarella, jamón y cabanossi</string>
+    <string name="oferta_price">S/. 56.9</string>
+    <string name="btntxt_delivery">Pide por delivery</string>
+    <string name="order">Order!</string>
+    <string name="tipo_de_pizza">Tipo de Pizza</string>
+    <string name="tipo_de_masa">Tipo de Masa</string>
+    <string name="masa_gruesa">Masa Gruesa</string>
+    <string name="masa_delgada">Masa Delgada</string>
+    <string name="masa_artesanal">Masa Artesanal</string>
+    <string name="complementos">Complementos</string>
+    <string name="extra_queso_mozarella">Extra queso mozarella</string>
+    <string name="extra_jam_n">Extra jamón</string>
+    <string name="direcci_n_de_env_o">Dirección de envío</string>
+    <string-array name="android_layout_arrays">
+        <item>HAWAIANA</item>
+        <item>PEPPERONI</item>
+        <item>AMERICANA</item>
+        <item>MEAT LOVER</item>
+    </string-array>
+</resources>

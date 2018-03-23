@@ -1,9 +1,22 @@
 package com.undead.nosavvy.labcalificado1;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.media.RingtoneManager;
+import android.os.Build;
 import android.os.CountDownTimer;
+import android.os.Handler;
+import android.provider.Settings;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -23,6 +36,7 @@ import butterknife.OnClick;
 import butterknife.OnItemSelected;
 
 public class PedidoActivity extends AppCompatActivity {
+    private NotificationUtils mNotificationUtils;
     private final int AMERICANA = 38;
     private final int PEPPERONI = 42;
     private final int HAWAIANA = 36;
@@ -122,19 +136,31 @@ public class PedidoActivity extends AppCompatActivity {
         String address = String.valueOf(direccion.getText());
         double total = pizza_precio + sobrecargo - descuento;
         Toast.makeText(this,"Precio de la pizza : "+String.valueOf(total)+" \nUna pizza "+tipo_pizza+" a la dirección "+address+" llegando pronto",Toast.LENGTH_SHORT).show();
-        CountDownTimer waitTimer;
-        waitTimer = new CountDownTimer(10000, 1000) {
+        CountDownTimer waitTimer = new CountDownTimer(10000, 100) {
 
             public void onTick(long millisUntilFinished) {
 
             }
 
             public void onFinish() {
-                Intent i = new Intent(getApplicationContext(),NotificacionActivity.class);
-                startActivity(i);
+             //   Toast.makeText(PedidoActivity.this, "HOLA", Toast.LENGTH_SHORT).show();
+              notificacion();
+
             }
         }.start();
     }
+
+    public void notificacion (){
+        Intent intent = new Intent(this, OfertaActivity.class);
+        PendingIntent pIntent = PendingIntent.getActivity(this,0,intent,0);
+        Notification.Builder nb = mNotificationUtils.
+                getAndroidChannelNotification("InstantPizza", "Una pizza llegando en 10 minutos ;)" + "",pIntent);
+
+        mNotificationUtils.getManager().notify(101, nb.build());
+        startActivity(intent);
+    }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -143,6 +169,8 @@ public class PedidoActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         int day_num = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
         dia = (day_num == 6) ? "VIERNES" : "";
+
+        mNotificationUtils = new NotificationUtils(this);
 
 
     }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.undead.nosavvy.labcalificado1">
-
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -21,7 +21,8 @@
         </activity>
         <activity android:name=".OfertaActivity" />
         <activity android:name=".PedidoActivity" />
-        <activity android:name=".NotificacionActivity"></activity>
+        <activity android:name=".NotificacionActivity" />
+        <activity android:name=".NotificationView"></activity>
     </application>
 
 </manifest>

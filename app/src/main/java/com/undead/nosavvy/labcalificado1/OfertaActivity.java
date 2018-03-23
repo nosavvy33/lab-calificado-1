@@ -27,7 +27,9 @@ public class OfertaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_oferta);
         ButterKnife.bind(this);
         videoView.setMediaController(new MediaController(this));
-        videoView.setVideoURI(Uri.parse("https://www.youtube.com/watch?v=f9Slq2ck7xQ"));
+        videoView.setVideoURI(Uri.parse("http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"));
+        videoView.setMediaController(null);
         videoView.start();
+
     }
 }
